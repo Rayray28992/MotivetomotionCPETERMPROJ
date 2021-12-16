@@ -11,16 +11,13 @@ public class sureVoice : MonoBehaviour
 {
     private KeywordRecognizer kR;
     private Dictionary<string, Action> actions = new Dictionary<string, Action>();
-    public Button Y, N;
-    public GameObject sceneM;
+    public Button Y1, Y2, Y3, N1, N2, N3;
+    public GameObject sure1, sure2, sure3;
 
     void Start()
     {
-        if (sceneM.activeSelf)
-        { 
-            actions.Add("yes", Yes);
-            actions.Add("no", No);
-        }
+        actions.Add("yes", Yes);
+        actions.Add("no", No);
 
         kR = new KeywordRecognizer(actions.Keys.ToArray());
         kR.OnPhraseRecognized += Recog;
@@ -34,11 +31,33 @@ public class sureVoice : MonoBehaviour
     }
     private void Yes()
     {
-        Y.onClick.Invoke();
+        if (sure1.activeSelf)
+        {
+            Y1.onClick.Invoke();
+        }
+        if (sure2.activeSelf)
+        {
+            Y2.onClick.Invoke();
+        }
+        if (sure3.activeSelf)
+        {
+            Y3.onClick.Invoke();
+        }
         kR.Stop();
     }
     private void No()
     {
-        N.onClick.Invoke();
+        if (sure1.activeSelf)
+        {
+            N1.onClick.Invoke();
+        }
+        if (sure2.activeSelf)
+        {
+            N2.onClick.Invoke();
+        }
+        if (sure3.activeSelf)
+        {
+            N3.onClick.Invoke();
+        }
     }
 }
